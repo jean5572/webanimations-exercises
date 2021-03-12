@@ -32,13 +32,13 @@ document.querySelectorAll(".star").forEach((star) => {
     },
   ];
 
-  star.animate(starKeyframes, starProperties);
-  star.onfinish = function () {
-    star.cancel();
-    console.log("finished");
-    star.currentTime = 0;
-    star.play();
-    console.log("restarted");
+  const starAnimation = star.animate(starKeyframes, starProperties);
+  starAnimation.onfinish = function () {
+    starAnimation.cancel();
+    console.log("animation cancelled");
+    starAnimation.currentTime = 0;
+    starAnimation.play();
+    console.log("animation start");
   };
   // Also make the duration random - and why not also animate opacity and scale (to and from random values)
 });
